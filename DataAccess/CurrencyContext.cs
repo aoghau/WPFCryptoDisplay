@@ -17,6 +17,6 @@ namespace DataAccess
             return currencies.data;
         }
 
-
+        public CurrencyContext() { }
     }
 }
