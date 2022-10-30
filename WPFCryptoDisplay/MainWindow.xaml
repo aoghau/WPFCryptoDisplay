@@ -6,7 +6,40 @@
         xmlns:local="clr-namespace:WPFCryptoDisplay"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        
+    </Window.Resources>
+    
     <Grid>
+        <TextBlock HorizontalAlignment="Left" Height="45" Margin="60,10,0,0" TextWrapping="Wrap" Text="Main Page" VerticalAlignment="Top" Width="85"/>
+        <ScrollViewer HorizontalAlignment="Center" Height="310" Margin="0,93,0,0" VerticalAlignment="Top" Width="664">
+            <Grid>                
+                <ListBox Grid.Column="0" ItemsSource="{Binding Currencies}">
+                    <TextBlock Text="amogus"/>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <TextBlock FontSize="18" Text="{Binding name}"/>
+                                <TextBlock FontSize="18" Text="Amogus"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </ScrollViewer>
+
+        <!--<ListBox Grid.Column="0" ItemsSource="{Binding Phones}"
+                 SelectedItem="{Binding SelectedPhone}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=Title}" />
+                        <TextBlock Text="{Binding Path=Company}" />
+                        <TextBlock Text="{Binding Path=Price}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
 
     </Grid>
 </Window>

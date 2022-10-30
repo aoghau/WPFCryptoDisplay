@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataAccess;
+using ViewModel;
 
 namespace WPFCryptoDisplay
 {
@@ -23,6 +25,7 @@ namespace WPFCryptoDisplay
         public MainWindow()
         {
             InitializeComponent();
-        }
+            this.DataContext = new BusinessLogic();
+        }        
     }
 }
