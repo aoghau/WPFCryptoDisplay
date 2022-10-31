@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Xaml.Behaviors;
 using DataAccess;
 using ViewModel;
 
@@ -22,10 +24,23 @@ namespace WPFCryptoDisplay
     /// </summary>
     public partial class MainWindow : Window
     {
+       
         public MainWindow()
         {
             InitializeComponent();
+            this.Loaded += MainWindow_Loaded;
             this.DataContext = new BusinessLogic();
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            await LoadData();
         }        
+
+        public async Task LoadData()
+        {
+            BusinessLogic logic = new BusinessLogic();
+            this.TopTen.ItemsSource = await logic.GetTopCurrencies();
+        }
     }
 }
