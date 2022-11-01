@@ -22,7 +22,7 @@ namespace WPFCryptoDisplay
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Page
     {
        
         public MainWindow()
@@ -41,6 +41,12 @@ namespace WPFCryptoDisplay
         {
             BusinessLogic logic = new BusinessLogic();
             this.TopTen.ItemsSource = await logic.GetTopCurrencies();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchPage page = new SearchPage();
+            this.NavigationService.Navigate(page);
         }
     }
 }

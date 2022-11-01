@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPFCryptoDisplay.MainWindow"
+﻿<Page x:Class="WPFCryptoDisplay.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,39 +7,28 @@
         xmlns:local="clr-namespace:WPFCryptoDisplay"        
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        
-    </Window.Resources>
+    
+
     
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="45" Margin="60,10,0,0" TextWrapping="Wrap" Text="Main Page" VerticalAlignment="Top" Width="85"/>
-        <ScrollViewer HorizontalAlignment="Center" Height="310" Margin="0,93,0,0" VerticalAlignment="Top" Width="664">
-            <Grid>                
-                <ListBox Grid.Column="0" x:Name="TopTen">                    
+        <Frame x:Name="mainFrame"/>
+        <TextBlock HorizontalAlignment="Left" Height="30" Margin="60,18,0,0" TextWrapping="Wrap" FontSize="20" Text="Main Page" VerticalAlignment="Top" Width="120"/>
+        <ScrollViewer Margin="60,75,50,45">
+            <Grid>
+                <ListBox Grid.Column="0" x:Name="TopTen">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5">
                                 <TextBlock FontSize="18" Text="{Binding name}"/>
-                                
+                                <TextBlock FontSize="14" Text="{Binding priceUsd}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
         </ScrollViewer>
+        <Button x:Name="SearchButton" Content="Search" Click="SearchButton_Click" HorizontalAlignment="Left" Height="22" Margin="668,24,0,0" VerticalAlignment="Top" Width="82"/>
 
-        <!--<ListBox Grid.Column="0" ItemsSource="{Binding Phones}"
-                 SelectedItem="{Binding SelectedPhone}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path=Title}" />
-                        <TextBlock Text="{Binding Path=Company}" />
-                        <TextBlock Text="{Binding Path=Price}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
-
+        
     </Grid>
-</Window>
+</Page>

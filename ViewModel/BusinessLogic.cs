@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ViewModel
@@ -27,18 +28,16 @@ namespace ViewModel
             List<Currency> currencies = await GetCurrenciesAsync();
             List<Currency> topCurrencies = currencies.Where(u => Int32.Parse(u.rank) <= 10).ToList();
             return new ObservableCollection<Currency>(topCurrencies);
-        }        
+        }
 
-        //async public static Task<BusinessLogic> GetBusinessLogicAsync()
-        //{           
-        //    ObservableCollection<Currency> currencies = new ObservableCollection<Currency>(await GetCurrenciesAsync());
-        //    return new BusinessLogic(currencies);
-        //}
-
-        //private BusinessLogic(ObservableCollection<Currency> data)
-        //{
-        //    this.Currencies = data;
-        //}
+        //Case-sensitive 
+        public async Task<ObservableCollection<Currency>> SearchCurrency(string query)
+        {
+            List<Currency> currencies = await GetCurrenciesAsync();
+            Regex regex = new Regex($@"{query}\w*");
+            List<Currency> foundCurrencies = currencies.Where(u => regex.IsMatch(u.name)).ToList();
+            return new ObservableCollection<Currency>(foundCurrencies);
+        }
 
         public BusinessLogic(){ }
     }
