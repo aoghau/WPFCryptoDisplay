@@ -28,12 +28,14 @@ namespace WPFCryptoDisplay
         public MainWindow()
         {
             InitializeComponent();
-            this.Loaded += MainWindow_Loaded;
+            this.Loaded += MainWindow_Loaded;            
             this.DataContext = new BusinessLogic();
         }
 
+
+
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
+        {            
             await LoadData();
         }        
 
@@ -47,6 +49,13 @@ namespace WPFCryptoDisplay
         {
             SearchPage page = new SearchPage();
             this.NavigationService.Navigate(page);
+        }             
+
+        private void TopTen_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Currency selected = (Currency)this.TopTen.SelectedItem;
+            this.TopTen.SelectedItem = null;
+            this.NavigationService.Navigate(new DetailsPage(selected));
         }
     }
 }

@@ -12,11 +12,11 @@
     
     <Grid>
         <Frame x:Name="mainFrame"/>
-        <TextBlock HorizontalAlignment="Left" Height="30" Margin="60,18,0,0" TextWrapping="Wrap" FontSize="20" Text="Main Page" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Height="30" Margin="60,20,0,0" TextWrapping="Wrap" FontSize="20" Text="Main Page" VerticalAlignment="Top" Width="120"/>
         <ScrollViewer Margin="60,75,50,45">
             <Grid>
-                <ListBox Grid.Column="0" x:Name="TopTen">
-                    <ListBox.ItemTemplate>
+                <ListBox Grid.Column="0" x:Name="TopTen" SelectionChanged="TopTen_SelectionChanged">
+                    <ListBox.ItemTemplate >
                         <DataTemplate>
                             <StackPanel Margin="5">
                                 <TextBlock FontSize="18" Text="{Binding name}"/>

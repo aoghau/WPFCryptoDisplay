@@ -18,27 +18,30 @@ using DataAccess;
 namespace WPFCryptoDisplay
 {
     /// <summary>
-    /// Logic for SearchPage.xaml
+    /// Interaction logic for DetailsPage.xaml
     /// </summary>
-    public partial class SearchPage : Page
+    public partial class DetailsPage : Page
     {
-        public SearchPage()
+        Currency currency;
+
+        public DetailsPage(Currency curr)
         {
             InitializeComponent();
-            DataContext = new BusinessLogic();
-        }        
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            BusinessLogic logic = new BusinessLogic();
-            this.SearchResults.ItemsSource = await logic.SearchCurrency(this.SearchBar.Text);
+            currency = curr;
+            this.Loaded += DetailsPage_Loaded;
+            this.DataContext = currency;
         }
 
-        private void SearchResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DetailsPage_Loaded(object sender, RoutedEventArgs e)
         {
-            Currency selected = (Currency)this.SearchResults.SelectedItem;
-            this.SearchResults.SelectedItem = null;
-            this.NavigationService.Navigate(new DetailsPage(selected));
+            BusinessLogic logic = new BusinessLogic();
+
+        }
+
+        private void MarketDetails_Click(object sender, RoutedEventArgs e)
+        {
+            MarketDetails details = new MarketDetails(currency.id);
+            this.NavigationService.Navigate(details);
         }
     }
 }

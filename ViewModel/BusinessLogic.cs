@@ -19,7 +19,7 @@ namespace ViewModel
         {
             var client = new HttpClient();
             var request = await client.GetStringAsync("http://api.coincap.io/v2/assets");
-            Wrapper currencies = JsonConvert.DeserializeObject<Wrapper>(request);
+            Wrapper<Currency> currencies = JsonConvert.DeserializeObject<Wrapper<Currency>>(request);
             return currencies.data;
         }
 
@@ -37,6 +37,14 @@ namespace ViewModel
             Regex regex = new Regex($@"{query}\w*");
             List<Currency> foundCurrencies = currencies.Where(u => regex.IsMatch(u.name)).ToList();
             return new ObservableCollection<Currency>(foundCurrencies);
+        }
+
+        public async Task<ObservableCollection<Market>> GetMarkets(string currencyId)
+        {
+            var client = new HttpClient();
+            var request = await client.GetStringAsync($"http://api.coincap.io/v2/assets/{currencyId}/markets");
+            Wrapper<Market> markets = JsonConvert.DeserializeObject<Wrapper<Market>>(request);
+            return new ObservableCollection<Market>(markets.data);
         }
 
         public BusinessLogic(){ }
