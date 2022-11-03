@@ -9,7 +9,7 @@
       Title="DetailsPage">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="40" Margin="55,25,0,0" TextWrapping="Wrap" FontSize="20" Text="{Binding StringFormat={}{0} Details, Path=name}" VerticalAlignment="Top" Width="150"/>
+        <TextBlock HorizontalAlignment="Left" Height="40" Margin="55,25,0,0" TextWrapping="Wrap" FontSize="20" Text="{Binding StringFormat={}{0} Details, Path=name}" VerticalAlignment="Top" Width="300"/>
         <Grid HorizontalAlignment="Left" Height="360" Margin="55,75,0,0" VerticalAlignment="Top" Width="695">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
