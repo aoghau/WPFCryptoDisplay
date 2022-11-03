@@ -35,6 +35,7 @@ namespace WPFCryptoDisplay
         {
             BusinessLogic logic = new BusinessLogic();
             this.Markets.ItemsSource = await logic.GetMarkets(currency);
+            this.CurrencyName.Text = currency + " markets and prices";
         }
     }
 }

@@ -9,7 +9,7 @@
       Title="DetailsPage">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="40" Margin="55,25,0,0" TextWrapping="Wrap" FontSize="20" Text="{Binding name}" VerticalAlignment="Top" Width="150"/>
+        <TextBlock HorizontalAlignment="Left" Height="40" Margin="55,25,0,0" TextWrapping="Wrap" FontSize="20" Text="{Binding StringFormat={}{0} Details, Path=name}" VerticalAlignment="Top" Width="150"/>
         <Grid HorizontalAlignment="Left" Height="360" Margin="55,75,0,0" VerticalAlignment="Top" Width="695">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -35,13 +35,13 @@
             <ListBox Grid.Column="1" HorizontalAlignment="Right">
                 <StackPanel Margin="10">
                     <ListBoxItem>
-                        <TextBlock FontSize="18" Text="{Binding priceUsd}"/>
+                        <TextBlock FontSize="18" Text="{Binding StringFormat=${0} USD, Path=priceUsd}"/>
                     </ListBoxItem>
                     <ListBoxItem>
-                        <TextBlock FontSize="18" Text="{Binding volumeUsd24Hr}"/>
+                        <TextBlock FontSize="18" Text="{Binding StringFormat=${0} USD, Path=volumeUsd24Hr}"/>
                     </ListBoxItem>
                     <ListBoxItem>
-                        <TextBlock FontSize="18" Text="{Binding changePercent24Hr}"/>
+                        <TextBlock FontSize="18" Text="{Binding StringFormat={}{0}%, Path=changePercent24Hr}"/>
                     </ListBoxItem>
                 </StackPanel>
             </ListBox>

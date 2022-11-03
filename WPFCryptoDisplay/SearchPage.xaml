@@ -16,7 +16,7 @@
                         <DataTemplate>
                             <StackPanel Margin="5">
                                 <TextBlock FontSize="18" Text="{Binding name}"/>
-                                <TextBlock FontSize="14" Text="{Binding priceUsd}"/>
+                                <TextBlock FontSize="14" Text="{Binding StringFormat=Price: ${0} USD, Path=priceUsd}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
